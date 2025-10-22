@@ -3,7 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pizastudio - 動画制作・デジタルソリューション</title>
+    <title>Pizastudio - 動画制作・デジタルソリューション | 映像制作のプロフェッショナル</title>
+    <meta name="description" content="Pizastudioは動画制作、モーショングラフィック、ライブ配信、デザイン制作を提供する映像制作会社です。スタートアップから大企業まで、幅広いニーズに対応します。">
+    <meta name="keywords" content="動画制作,映像制作,モーショングラフィック,ライブ配信,デザイン,ホームページ作成,公式LINE,Pizastudio">
+    <meta name="author" content="Pizastudio">
+
+    <!-- OGP -->
+    <meta property="og:title" content="Pizastudio - 映像で魅せる、ブランドを創る">
+    <meta property="og:description" content="動画制作からデジタルマーケティングまで、あなたのビジネスを次のレベルへ">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pizastudio.com">
+    <meta property="og:site_name" content="Pizastudio">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pizastudio - 動画制作・デジタルソリューション">
+    <meta name="twitter:description" content="映像で魅せる、ブランドを創る">
+
     <style>
         * {
             margin: 0;
@@ -101,6 +117,34 @@
 
         .nav-links a:hover::after {
             width: 100%;
+        }
+
+        /* ハンバーガーメニュー */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary-orange);
+            transition: all 0.3s ease;
+            border-radius: 3px;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
         }
 
         /* ヒーローセクション */
@@ -395,8 +439,35 @@
 
         /* レスポンシブ */
         @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+
             .nav-links {
-                display: none;
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(15px);
+                width: 70%;
+                height: calc(100vh - 70px);
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+                transition: right 0.3s ease;
+                border-left: 2px solid var(--light-orange);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links li {
+                margin: 1rem 0;
+            }
+
+            .nav-links a {
+                font-size: 1.2rem;
             }
 
             .hero h1 {
@@ -460,6 +531,11 @@
     <header>
         <nav>
             <a href="#home" class="logo">Pizastudio</a>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
             <ul class="nav-links">
                 <li><a href="#home">ホーム</a></li>
                 <li><a href="#services">サービス</a></li>
@@ -575,6 +651,29 @@
                         <p>@pizastudio<br>お気軽にメッセージください</p>
                     </div>
                 </div>
+
+                <!-- お問い合わせフォーム -->
+                <div class="contact-form fade-in" style="margin-top: 3rem;">
+                    <form id="contactForm">
+                        <div style="display: grid; gap: 1.5rem; max-width: 600px; margin: 0 auto;">
+                            <input type="text" name="name" placeholder="お名前" required style="padding: 1rem; border: 2px solid rgba(255, 107, 53, 0.2); border-radius: 10px; font-size: 1rem; background: rgba(255, 255, 255, 0.1); color: white;">
+                            <input type="email" name="email" placeholder="メールアドレス" required style="padding: 1rem; border: 2px solid rgba(255, 107, 53, 0.2); border-radius: 10px; font-size: 1rem; background: rgba(255, 255, 255, 0.1); color: white;">
+                            <input type="tel" name="phone" placeholder="電話番号（任意）" style="padding: 1rem; border: 2px solid rgba(255, 107, 53, 0.2); border-radius: 10px; font-size: 1rem; background: rgba(255, 255, 255, 0.1); color: white;">
+                            <select name="service" required style="padding: 1rem; border: 2px solid rgba(255, 107, 53, 0.2); border-radius: 10px; font-size: 1rem; background: rgba(255, 255, 255, 0.1); color: white;">
+                                <option value="">ご希望のサービス</option>
+                                <option value="video">動画編集・撮影</option>
+                                <option value="line">公式LINE構築</option>
+                                <option value="motion">モーショングラフィック</option>
+                                <option value="live">配信・ライブ制作</option>
+                                <option value="design">デザイン制作</option>
+                                <option value="website">ホームページ作成</option>
+                                <option value="other">その他</option>
+                            </select>
+                            <textarea name="message" placeholder="メッセージ" rows="5" required style="padding: 1rem; border: 2px solid rgba(255, 107, 53, 0.2); border-radius: 10px; font-size: 1rem; background: rgba(255, 255, 255, 0.1); color: white; resize: vertical;"></textarea>
+                            <button type="submit" style="padding: 1.2rem; background: var(--primary-orange); color: white; border: none; border-radius: 50px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: all 0.3s ease;">送信する</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
@@ -586,6 +685,23 @@
     </footer>
 
     <script>
+        // ハンバーガーメニュー
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // メニューリンククリックでメニューを閉じる
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
         // スムーズスクロール
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -643,6 +759,51 @@
                 });
             });
         }
+
+        // お問い合わせフォーム送信処理
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const formData = new FormData(this);
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+
+            // フォーム送信のシミュレーション（実際のバックエンドに接続する場合は適宜変更してください）
+            console.log('お問い合わせ内容:', data);
+
+            // 成功メッセージを表示
+            alert('お問い合わせありがとうございます！\n担当者より2営業日以内にご連絡いたします。');
+
+            // フォームをリセット
+            this.reset();
+        });
+
+        // フォーム要素にホバー効果を追加
+        document.querySelectorAll('#contactForm input, #contactForm select, #contactForm textarea').forEach(element => {
+            element.addEventListener('focus', function() {
+                this.style.borderColor = 'var(--primary-orange)';
+                this.style.boxShadow = '0 0 15px rgba(255, 107, 53, 0.2)';
+            });
+
+            element.addEventListener('blur', function() {
+                this.style.borderColor = 'rgba(255, 107, 53, 0.2)';
+                this.style.boxShadow = 'none';
+            });
+        });
+
+        // 送信ボタンのホバー効果
+        const submitButton = document.querySelector('#contactForm button[type="submit"]');
+        submitButton.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-3px)';
+            this.style.boxShadow = '0 10px 25px rgba(255, 107, 53, 0.3)';
+        });
+
+        submitButton.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+            this.style.boxShadow = 'none';
+        });
     </script>
 </body>
 </html>
